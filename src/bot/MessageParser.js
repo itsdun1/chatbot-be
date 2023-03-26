@@ -3,9 +3,15 @@ import React from 'react';
 
 const MessageParser = ({ children, actions }) => {
   const parse = (message) => {
-    if (message.includes('hello')) {
-      actions.handleHello();
-    }
+    console.log(message, 'MessageParser')
+    actions.getRes(message);
+    actions.getRes2(message);
+
+    // if (message.includes('hello')) {
+    //   actions.handleHello();
+    // }
+    // actions.
+    // actions.handleHello(message);
   };
 
   return (

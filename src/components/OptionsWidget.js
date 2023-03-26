@@ -16,7 +16,7 @@ import _ from 'underscore';
 // ]
 //   };
 
-function ChatBot() {
+function Options() {
 
 
   const [messages, setMessages] = useState([]);
@@ -66,69 +66,6 @@ function useForceUpdate(){
     fetchData();
   }, [update]);
 
-//   useEffect(() => {
-//     const interval = setInterval(() => {
-//     //   setTime(new Date());
-//     }, 1000);
-
-//     return () => clearInterval(interval);
-//   }, []);
-  
-// async function fetchMessages() {
-//     const response = await fetch('http://localhost:3001/getAllMessageForUser?name=ADK')
-//     let data = await response.json();
-//     // data = data.messages;
-//     return data.messages;
-//   }
-
-//   useEffect(() => {
-//     async function fetchData() {
-//       const data = await fetchMessages();
-//       setMessages(data);
-//     }
-//     fetchData();
-//   }, []);
-  
-//   useEffect(() => {
-//     // Fetch history messages from API
-//     fetch('http://localhost:3001/getAllMessageForUser?name=ADK')
-//       .then(response => response.json())
-//       .then(data => {
-//         // Format the data into an array of objects
-//         const messageList = [];
-//         _.each(data.messages, message => {
-//             if(message.role === 'user') {
-//                 messageList.push(createClientMessage(message.content));
-//             } else {
-//                 messageList.push(createChatBotMessage(message.content));
-//             }
-//         })
-
-//         // Set the messages state variable
-//         setMessages(messageList);
-//         console.log(setMessages);
-//       })
-//       .catch(error => {
-//         console.error(error);
-//       });
-//   }, []);
-
-
-// useEffect(() => {
-//     const fetchData = async () => {
-//     const response = await fetch('http://localhost:3001/getAllMessageForUser?name=ADK')
-//     const data = await response.json();
-//     console.log(data)
-//       const chatbotMessages = data.messages.map(message => createChatBotMessage(message.content));
-//       setMessages(chatbotMessages);
-//       console.log(messages);
-//     };
-
-//     fetchData();
-//   }, []);
-//   const handleInputChange = (event) => {
-//     setInputValue(event.target.value);
-//   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -151,18 +88,9 @@ function useForceUpdate(){
   return (
   
       <div className="App mx-auto col-md-6 col-sm-8 col-lg-4 cpl-xl-3 my-5">
-        {/* {
-            <Button> Play a Game</Button>
-        } */}
-       {(messages.length || isUpdateRequired) &&  <Chatbot
-          config={config}
-          messageParser={MessageParser}
-          actionProvider={ActionProvider}
-          messageHistory={messages}
-          saveMessages={saveMessages}
-        ></Chatbot>}
+        <Button> Play A Game</Button>
       </div>
   );
 }
 
-export default ChatBot;
+export default Options;
