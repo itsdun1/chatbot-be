@@ -130,6 +130,36 @@ function useForceUpdate(){
 //     setInputValue(event.target.value);
 //   };
 
+const steps = [
+  {
+    id: 'hello',
+    message: 'Hi there, how can I help you today?',
+    trigger: 'options',
+  },
+  {
+    id: 'options',
+    message: 'Please choose an option:',
+    trigger: 'menu',
+  },
+  {
+    id: 'menu',
+    options: [
+      { value: 'option1', label: 'Option 1', trigger: 'option1' },
+      { value: 'option2', label: 'Option 2', trigger: 'option2' },
+    ],
+  },
+  {
+    id: 'option1',
+    message: 'You chose option 1',
+    end: true,
+  },
+  {
+    id: 'option2',
+    message: 'You chose option 2',
+    end: true,
+  },
+];
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const response = await fetch('http://localhost:3001/postMessage', {
@@ -160,6 +190,8 @@ function useForceUpdate(){
           actionProvider={ActionProvider}
           messageHistory={messages}
           saveMessages={saveMessages}
+          // config={config}
+          steps={steps} 
         ></Chatbot>}
       </div>
   );

@@ -5,7 +5,7 @@ const MessageParser = ({ children, actions }) => {
   const parse = (message) => {
     console.log(message, 'MessageParser')
     actions.getRes(message);
-    actions.getRes2(message);
+    // actions.getRes2(message);
 
     // if (message.includes('hello')) {
     //   actions.handleHello();

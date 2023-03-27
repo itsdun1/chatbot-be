@@ -31,7 +31,8 @@ const ActionProvider =  ({ createChatBotMessage, setState, children }) => {
   setState((prev) => ({
     ...prev,
     messages: [...prev.messages, messages],
-    message2: messages
+    message2: messages,
+    latestId: messages.id
 
   }));
   };
@@ -55,30 +56,111 @@ const ActionProvider =  ({ createChatBotMessage, setState, children }) => {
   //     }));
   // };
 
-  const getRes = (message2) => {
+  const getRes = async (message2) => {
     console.log('inside getRes');
-    const message = createChatBotMessage(
-      message2,
-      {
-        withAvatar: true,
-        widget: "botres",
-      }
-    );
-    addMessageToBotState(message);
+
+    async function fetchApi() {
+      // console.log(props, 'props')
+        // console.log(props.state.message2)
+    const response = await fetch('http://localhost:3001/postMessage', {
+      method: 'POST',
+      body: JSON.stringify({ message: message2, name: 'ADK' }),
+      headers: { 'Content-Type': 'application/json' },
+    //   mode: 'no-cors'
+    });
+    // console.log(props.setState)
+
+    const data = await response.json();
+    // setMess(data.message);
+        console.log(data.message, 'bot--response')
+        let msg;
+        // if(data.message.role === 'user') {
+        //     msg = createClientMessage(data.message.content);
+        // } else {
+        //     msg = createChatBotMessage(data.message.content);
+        // }
+          msg = createChatBotMessage(data.message, {
+            withAvatar: true,
+            widget: "botres",
+          });
+
+console.log(1, msg);
+    // if (Array.isArray(data.message)) {
+console.log(2);
+        // if (msg.message !== props.state[props.state.length - 1]) {
+
+        setState((prev) => ({
+            ...prev,
+            messages: [...prev.messages, msg],
+            isUpdateRequired: true,
+            latestMessageId: msg.id
+          //   message2: messages
+          }));
+        // }
+    //   } else {
+// console.log(3);
+
+//         await props.setState((prev) => ({
+//           ...prev,
+//           messages: [...prev.messages, msg],
+//           isUpdateRequired: true
+
+//         //   message2: data.message
+  
+//         }));
+//       }
+
+    // await props.setState((prev) => ({
+    //     ...prev,
+    //     messages: [...prev.messages, 'hello'],
+    //     // message2: 
+    //     text: 'hello'
+    //   }));
+    // console.log(props, 'final----')
+    }
+    fetchApi();
+    // const message = createChatBotMessage(
+    //   'Test',
+    //   {
+    //     withAvatar: true,
+    //     widget: "botres",
+    //   }
+    // );
+    // addMessageToBotState(message);
   };
 
 
   const getRes2 = (message2) => {
     console.log('inside getRes');
-    const message = createChatBotMessage(
-      message2,
-      {
-        withAvatar: true,
-        widget: "tools",
-      }
-    );
-    addMessageToBotState(message);
+    console.log(message2)
+    async function fetchApi() {
+      // console.log(props, 'props')
+        // console.log(props.state.message2)
+    const response = await fetch('http://localhost:3001/postMessage', {
+      method: 'POST',
+      body: JSON.stringify({ message: message2, name: 'ADK' }),
+      headers: { 'Content-Type': 'application/json' },
+    //   mode: 'no-cors'
+    });
+    const data = await response.json();
+    // setMess(data.message);
+        console.log(data.message, 'bot--response')
+        let msg;
+          msg = createChatBotMessage(data.message, {
+            withAvatar: true,
+            // widget: "botres",
+          });
+        setState((prev) => ({
+            ...prev,
+            messages: [...prev.messages, msg],
+            isUpdateRequired: true,
+            latestMessageId: msg.id
+          //   message2: messages
+          }));
   };
+  fetchApi();
+
+}
 
 
   // const parse = (message) => {
