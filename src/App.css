@@ -187,6 +187,12 @@
 .react-chatbot-kit-chat-inner-container{
   height:750px
 }
+.react-chatbot-kit-chat-message-container{
+  height:auto
+}
+.react-chatbot-kit-chat-input-container {
+  position: fixed;
+}
 
 @keyframes App-logo-spin {
   from {
