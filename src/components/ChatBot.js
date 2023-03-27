@@ -5,7 +5,7 @@ import config from '../bot/config.js';
 import MessageParser from '../bot/MessageParser.js';
 import ActionProvider from '../bot/ActionProvider.js';
 import _ from 'underscore';
-
+import './../App.css'
 // const config = {
 //     // initialMessages: [createChatBotMessage(`Hello world`), ],
 //     initialMessages: [
@@ -49,6 +49,12 @@ function useForceUpdate(){
             messageList.push(createChatBotMessage(message.content));
         }
     })
+    if(!data.messages || data.messages.length === 0) {
+      messageList.push(createChatBotMessage('Namastey! Mai Aapki English Teacher hu. Boliye app kya seekhna chahenge ? App Muje type kr ke bhi jawab de sakte hai.',{ 
+          withAvatar: true,
+          widget: "botres",
+        }));
+    }
     console.log(messageList, 'list');
     // config.initialMessages = messageList;
     setMessages(messageList);
@@ -58,7 +64,18 @@ function useForceUpdate(){
     // }, 1000)
     console.log('===========================')
     console.log(messages, 'createChatBotMessage');
-    
+    // if(messages.length === 0) {
+    //   // messageList.push(createChatBotMessage('Hi I am your english teacher', {}))
+    //   const msg = createChatBotMessage('Hi I am your english teacher', {
+    //     withAvatar: true,
+    //     widget: "botres",
+    //   });
+
+    //   setMessages([msg])
+    //   console.log(messages, 'createChatBotMessage');
+    //   setUpdate(true);
+    // }
+
     setUpdate(true);
     // return () => setValue(value => value + 1); // update state to force render
 

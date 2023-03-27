@@ -64,6 +64,10 @@
   box-shadow: inset 195px 0px 0px #2273c4;
   color: #ffffff;
 }
+.option-item:checked {
+  box-shadow: inset 195px 0px 0px #2273c4;
+  color: #ffffff;
+}
 
 .stats {
   color: white;
@@ -147,6 +151,23 @@
 }
 .app-chatbot-button-icon {
   fill: #fff;
+}
+
+.react-chatbot-kit-chat-bot-message {
+  background-color: #2898ec;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  color: #fff;
+  font-weight: medium;
+  position: relative;
+  width: 184.5px;
+  /* margin-left: auto; */
+  text-align: left;
+}
+.react-chatbot-kit-chat-container {
+  position: relative;
+  /* width: 275px; */
 }
 
 
