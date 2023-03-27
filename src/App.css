@@ -170,6 +170,23 @@
   /* width: 275px; */
 }
 
+.react-chatbot-kit-chat-container {
+  width:100%
+}
+.react-chatbot-kit-chat-bot-message {
+  margin-left: 0%;
+  width: 75%;
+}
+.botName{
+  text-align: center;
+}
+.react-chatbot-kit-chat-header {
+  visibility: hidden;
+  height: 0;
+}
+.react-chatbot-kit-chat-inner-container{
+  height:750px
+}
 
 @keyframes App-logo-spin {
   from {

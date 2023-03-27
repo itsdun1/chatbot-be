@@ -4,7 +4,7 @@ import ChatBot from './components/ChatBot';
 function App() {  
   return (
     <div>
-      <h1>Mitra</h1>
+      <h1 class='botName'>Mitra Learn</h1>
       <ChatBot />
     </div>
   );
