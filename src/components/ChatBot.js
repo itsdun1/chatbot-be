@@ -32,7 +32,7 @@ function useForceUpdate(){
   useEffect(() => {
     async function fetchData() {
       // You can await here
-      const response = await fetch('http://localhost:3001/getAllMessageForUser?name=ADK', {
+      const response = await fetch('http://ec2-100-25-22-198.compute-1.amazonaws.com:3001/getAllMessageForUser?name=ADK', {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
         // mode: 'no-cors'
@@ -42,12 +42,21 @@ function useForceUpdate(){
       // ...
     //   messages = _.pluck
     const messageList = [];
-    _.each(data.messages, message => {
+ /*   _.each(data.messages, message => {
         if(message.role === 'user') {
             messageList.push(createClientMessage(message.content));
         } else {
             messageList.push(createChatBotMessage(message.content));
         }
+    })*/
+	     _.each(data.messages, (message, index) => {
+      if(index > 2) {
+        if(message.role === 'user') {
+          messageList.push(createClientMessage(message.content));
+      } else {
+          messageList.push(createChatBotMessage(message.content));
+      }
+      }
     })
     if(!data.messages || data.messages.length === 0) {
       messageList.push(createChatBotMessage('Namastey! Mai Aapki English Teacher hu. Boliye app kya seekhna chahenge ? App Muje type kr ke bhi jawab de sakte hai.',{ 
@@ -179,7 +188,7 @@ const steps = [
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const response = await fetch('http://localhost:3001/postMessage', {
+    const response = await fetch('http://ec2-100-25-22-198.compute-1.amazonaws.com:3001/postMessage', {
       method: 'POST',
       body: JSON.stringify({ message: inputValue, name: 'ADK' }),
       headers: { 'Content-Type': 'application/json' },

@@ -62,7 +62,7 @@ const ActionProvider =  ({ createChatBotMessage, setState, children }) => {
     async function fetchApi() {
       // console.log(props, 'props')
         // console.log(props.state.message2)
-    const response = await fetch('http://localhost:3001/postMessage', {
+    const response = await fetch('http://ec2-100-25-22-198.compute-1.amazonaws.com:3001/postMessage', {
       method: 'POST',
       body: JSON.stringify({ message: message2, name: 'ADK' }),
       headers: { 'Content-Type': 'application/json' },
@@ -136,7 +136,7 @@ console.log(2);
     async function fetchApi() {
       // console.log(props, 'props')
         // console.log(props.state.message2)
-    const response = await fetch('http://localhost:3001/postMessage', {
+    const response = await fetch('http://ec2-100-25-22-198.compute-1.amazonaws.com:3001/postMessage', {
       method: 'POST',
       body: JSON.stringify({ message: message2, name: 'ADK' }),
       headers: { 'Content-Type': 'application/json' },

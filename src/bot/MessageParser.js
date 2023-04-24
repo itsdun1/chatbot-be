@@ -4,7 +4,10 @@ import React from 'react';
 const MessageParser = ({ children, actions }) => {
   const parse = (message) => {
     console.log(message, 'MessageParser')
-    actions.getRes(message);
+if(message) {
+      actions.getRes(message);
+    }
+    //actions.getRes(message);
     // actions.getRes2(message);
 
     // if (message.includes('hello')) {
