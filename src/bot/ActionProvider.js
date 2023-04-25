@@ -1,6 +1,6 @@
 // in ActionProvider.jsx
 import React from 'react';
-
+import {useParams} from "react-router-dom";
 const ActionProvider =  ({ createChatBotMessage, setState, children }) => {
   // const handleHello = (message) => {
   //   const botMessage = createChatBotMessage('Hello. Nice to meet you.');
@@ -58,13 +58,14 @@ const ActionProvider =  ({ createChatBotMessage, setState, children }) => {
 
   const getRes = async (message2) => {
     console.log('inside getRes');
-
-    async function fetchApi() {
+	//console.log(useParams())
+  	let userId = localStorage.getItem("userId")
+	  async function fetchApi() {
       // console.log(props, 'props')
         // console.log(props.state.message2)
-    const response = await fetch('http://ec2-100-25-22-198.compute-1.amazonaws.com:3001/postMessage', {
+    const response = await fetch('http://10.0.0.231:3001/postMessage', {
       method: 'POST',
-      body: JSON.stringify({ message: message2, name: 'ADK' }),
+      body: JSON.stringify({ message: message2, name: 'ADK', userId }),
       headers: { 'Content-Type': 'application/json' },
     //   mode: 'no-cors'
     });
@@ -132,13 +133,15 @@ console.log(2);
 
   const getRes2 = (message2) => {
     console.log('inside getRes');
+	//console.log(useParams())  
     console.log(message2)
+	   let userId = localStorage.getItem("userId")
     async function fetchApi() {
       // console.log(props, 'props')
         // console.log(props.state.message2)
-    const response = await fetch('http://ec2-100-25-22-198.compute-1.amazonaws.com:3001/postMessage', {
+    const response = await fetch('http://10.0.0.231:3001/postMessage', {
       method: 'POST',
-      body: JSON.stringify({ message: message2, name: 'ADK' }),
+      body: JSON.stringify({ message: message2, name: 'ADK', userId }),
       headers: { 'Content-Type': 'application/json' },
     //   mode: 'no-cors'
     });

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, Text, Button } from 'react';
+import {useParams} from "react-router-dom";
 import Chatbot, {createChatBotMessage, createClientMessage, Message} from 'react-chatbot-kit';
 import 'react-chatbot-kit/build/main.css';
 import config from '../bot/config.js';
@@ -18,6 +19,11 @@ import './../App.css'
 
 function ChatBot() {
 
+	function Topic() {
+  let { userId } = useParams();
+  // return <h3>Requested topic ID: {topicId}</h3>;
+  return userId;
+}
 
   const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState('');
@@ -31,12 +37,24 @@ function useForceUpdate(){
 }
   useEffect(() => {
     async function fetchData() {
+/*
       // You can await here
-      const response = await fetch('http://ec2-100-25-22-198.compute-1.amazonaws.com:3001/getAllMessageForUser?name=ADK', {
+      const response = await fetch('http://10.0.0.231:3001/getAllMessageForUser?name=ADK', {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
         // mode: 'no-cors'
       });
+   */
+
+const userId = '5bd47faa-f541-4efa-8443-9c503d3ab222'
+	 localStorage.setItem('userId', userId) ;  
+      const response = await fetch(`http://10.0.0.231:3001/getAllMessageForUser?userId=${userId}`, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+        // mode: 'no-cors'
+      });
+
+
       const data = await response.json();
     //   console.log(data);
       // ...
